@@ -1,0 +1,12 @@
+﻿
+container span {
+    display: inline-block;
+}
+
+span{
+    border: 2px solid black;
+    font-size:2rem;
+    font-weight:bold;
+    padding:0.5rem;
+    background-color:grey;
+}

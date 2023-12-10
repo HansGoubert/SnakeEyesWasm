@@ -1,0 +1,48 @@
+﻿@page "/"
+@using Client.Components
+@using Domain
+
+<PageTitle>Snake Eyes</PageTitle>
+
+<h1>Snake Eyes</h1>
+<div>
+	<Dice Dots="@_game.Eye1" />
+	<Dice Dots="@_game.Eye2" />
+</div>
+<hr/>
+<button class="btn.btn-primary" @onclick="@_game.Play" disabled="@_game.HasSnakeEyes">Play</button>
+<div>
+	<p>Score: @_game.Total</p>
+</div>
+
+@if (_game.HasSnakeEyes)
+{
+	<div class="alert alert-danger">SnakeEyes! Game ended</div>
+	<button @onclick="_game.Restart">Restart</button>
+}
+
+<h3>Highscores</h3>
+<ul>
+	@foreach (int score in _game.HighScores.OrderByDescending(x => x))
+	{
+		<li>@score</li>
+	}
+</ul>
+
+
+@code{
+	private Game _game = new();
+
+}
+
+
+
+<!--
+	slqsjxlqks
+	2 Dices 🎲
+ A button to play, when possible else it's disabled
+ A label that shows the current score or 0 by default
+ A list of highscores ordered by descending
+ An Alert when you lose the game.
+ A restart button only visible when you lost.
+ -->
